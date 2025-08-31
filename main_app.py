@@ -5,6 +5,9 @@ from components import init_session_state
 from components.login_form import login_form, is_logged_in, logout
 from lib import get_db
 
+# 这必须是第一个 Streamlit 命令
+st.set_page_config(layout="wide")
+
 # 获取数据库管理器
 db = get_db()
 

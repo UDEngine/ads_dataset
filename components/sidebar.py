@@ -14,7 +14,7 @@ def show_sidebar():
         page_options = {
             "dashboard": "🏠仪表板",
             "user_manage": "👤用户管理",
-            "task_data": "📊数据分析",
+            "task_data": "📊任务管理",
             "settings": "⚙️系统设置",
             "logout": "🚪退出登录"
         }

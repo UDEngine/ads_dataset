@@ -4,10 +4,11 @@ from lib import get_db
 
 def login_form():
     """登录表单组件"""
+    st.set_page_config(page_title="管理员系统登录", layout="centered")
     st.title("管理员系统登录")
     with st.form("login_form", clear_on_submit=True):
-        username = st.text_input("👑用户名", key="login_username")
-        password = st.text_input("🔑密码", type="password", key="login_password")
+        username = st.text_input("👑用户名", key="login_username", value="admin")
+        password = st.text_input("🔑密码", type="password", key="login_password", value="111111")
         submitted = st.form_submit_button("🚪 登录")
 
         if submitted:
@@ -16,7 +17,7 @@ def login_form():
             elif verify_user(username, password):
                 st.session_state.logged_in = True
                 st.session_state.username = username
-                st.session_state.user_info = get_user_info(username=username)
+                st.session_state.user_info = get_admin_info(username=username)
                 st.success("✅登录成功!")
 
                 # 设置查询参数以保持登录状态
@@ -59,7 +60,7 @@ def init_session_state():
         # 这里应该验证 token 的有效性
         st.session_state.logged_in = True
         st.session_state.username = token  # 或者从 token 中解码出用户名
-        st.session_state.user_info = get_user_info(username=token)
+        st.session_state.user_info = get_admin_info(username=token)
 
 
 def is_logged_in() -> bool:
@@ -80,7 +81,7 @@ def verify_user(username: str, password: str) -> bool:
         print(e)
         return False
 
-def get_user_info(username: str) -> Optional[Dict]:
+def get_admin_info(username: str) -> Optional[Dict]:
     """获取用户信息"""
     try:
         db = get_db()

@@ -5,3 +5,12 @@ secondaryBackgroundColor = "#F0F2F6"
 textColor = "#262730"
 font = "sans serif"
 
+[client]
+#隐藏侧边栏
+showSidebarNavigation = false
+
+[server]
+#文件保存时自动重新运行脚本
+runOnSave = true
+#是否启用跨域资源共享，默认为false。如果需要开放Streamlit应用，在非本机电脑也行访问，则需要设置为true
+enableCORS = true
